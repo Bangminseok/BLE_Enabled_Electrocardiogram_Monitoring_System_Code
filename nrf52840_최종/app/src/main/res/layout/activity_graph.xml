@@ -1,0 +1,161 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- 배터리 상태 표시 영역 -->
+    <LinearLayout
+        android:id="@+id/battery_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
+        android:padding="2dp">
+
+        <View android:id="@+id/battery_bar_1"
+            android:layout_width="12dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="2dp"
+            android:background="#AAAAAA" />
+
+        <View android:id="@+id/battery_bar_2"
+            android:layout_width="12dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="2dp"
+            android:background="#AAAAAA" />
+
+        <View android:id="@+id/battery_bar_3"
+            android:layout_width="12dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="2dp"
+            android:background="#AAAAAA" />
+
+        <View android:id="@+id/battery_bar_4"
+            android:layout_width="12dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="2dp"
+            android:background="#AAAAAA" />
+
+        <View android:id="@+id/battery_bar_5"
+            android:layout_width="12dp"
+            android:layout_height="20dp"
+            android:background="#AAAAAA" />
+    </LinearLayout>
+
+    <!-- 좌측 BPM 텍스트 -->
+    <TextView
+        android:id="@+id/bpm_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BPM: "
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_below="@id/battery_layout"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="20dp" />
+
+    <!-- 버튼 패널 (정렬 순서: 저장 → 정지 → 재생 → 홈 → 캡처) -->
+    <LinearLayout
+        android:id="@+id/button_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp">
+
+        <!-- ✅ 먼저 데이터 저장 -->
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="데이터 저장"
+            android:minWidth="80dp" />
+
+        <!-- ✅ 그다음 정지 -->
+        <Button
+            android:id="@+id/pause_button"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:text="정지"
+            android:minWidth="60dp" />
+
+        <Button
+            android:id="@+id/resume_button"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:text="재생"
+            android:minWidth="60dp" />
+
+        <Button
+            android:id="@+id/home_button"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:text="홈"
+            android:minWidth="60dp" />
+
+        <ImageButton
+            android:id="@+id/capture_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:background="@android:color/transparent"
+            android:src="@android:drawable/ic_menu_camera"
+            android:contentDescription="캡처" />
+    </LinearLayout>
+
+    <!-- 라디오 버튼: raw/filtered 전환 -->
+    <RadioGroup
+        android:id="@+id/mode_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/button_panel"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp">
+
+        <RadioButton
+            android:id="@+id/raw_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="raw data"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/filtered_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="filtered data"
+            android:layout_marginStart="16dp" />
+
+        <RadioButton
+            android:id="@+id/both_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="both"
+            android:layout_marginStart="16dp" />
+    </RadioGroup>
+
+    <!-- 그래프 영역 -->
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/Chart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/mode_group"
+        android:layout_marginTop="12dp" />
+</RelativeLayout>

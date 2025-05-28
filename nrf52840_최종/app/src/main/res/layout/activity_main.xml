@@ -1,0 +1,97 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <!-- SPAL 텍스트 (왼쪽 상단) -->
+    <TextView
+        android:id="@+id/lab_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SPAL"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
+
+    <!-- 중앙 텍스트 -->
+    <TextView
+        android:id="@+id/status_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ECG 실시간 모니터링"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="160dp" />
+    <!-- 오른쪽 상단 QR_Scan 텍스트 버튼 -->
+    <Button
+        android:id="@+id/qr_scan_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QR_Scan"
+        android:textSize="14sp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@android:color/transparent"
+        android:textColor="#4CAF50"
+        android:textStyle="bold" />
+
+    <!-- 블루투스 아이콘 + BLE 연결 텍스트 묶음 -->
+    <LinearLayout
+        android:id="@+id/ble_button_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/status_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:translationX="-5dp"
+        android:gravity="center_horizontal">
+
+        <ImageButton
+            android:id="@+id/ble_connect_button"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_bluetooth"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:background="@android:color/transparent"
+            android:contentDescription="BLE 연결" />
+
+        <TextView
+            android:id="@+id/ble_button_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BLE 연결 버튼"
+            android:textColor="#2196F3"
+            android:textSize="16sp"
+            android:layout_marginTop="6dp" />
+    </LinearLayout>
+
+    <!-- 연결 상태 텍스트 (중앙 정렬 유지) -->
+    <TextView
+        android:id="@+id/connecting_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="18sp"
+        android:textColor="#555555"
+        android:layout_below="@id/ble_button_group"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp" />
+
+    <!-- 하단의 PQRST 파형 이미지 -->
+    <ImageView
+        android:id="@+id/pqrst_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pqrst_waveform"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:maxWidth="200dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside" />
+
+</RelativeLayout>
